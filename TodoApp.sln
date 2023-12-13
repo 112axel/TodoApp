@@ -3,19 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{B958DFD8-D66E-4B95-A06C-D1ABE17452FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{B958DFD8-D66E-4B95-A06C-D1ABE17452FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6154224-3A3B-4392-8009-0DE0EF231E77} = {F6154224-3A3B-4392-8009-0DE0EF231E77}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor", "Blazor\Blazor.csproj", "{5BC91C6A-166B-4383-A88D-98B87ED1BDC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor", "Blazor\Blazor.csproj", "{5BC91C6A-166B-4383-A88D-98B87ED1BDC6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6154224-3A3B-4392-8009-0DE0EF231E77} = {F6154224-3A3B-4392-8009-0DE0EF231E77}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "tests\Tests.csproj", "{A253C193-0456-42C3-ADBA-76D2AF1F2B8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "tests\Tests.csproj", "{A253C193-0456-42C3-ADBA-76D2AF1F2B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{F6154224-3A3B-4392-8009-0DE0EF231E77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B958DFD8-D66E-4B95-A06C-D1ABE17452FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +35,12 @@ Global
 		{A253C193-0456-42C3-ADBA-76D2AF1F2B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A253C193-0456-42C3-ADBA-76D2AF1F2B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A253C193-0456-42C3-ADBA-76D2AF1F2B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6154224-3A3B-4392-8009-0DE0EF231E77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6154224-3A3B-4392-8009-0DE0EF231E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6154224-3A3B-4392-8009-0DE0EF231E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6154224-3A3B-4392-8009-0DE0EF231E77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
