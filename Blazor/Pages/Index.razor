@@ -8,14 +8,21 @@
     new TodoItem("dishwasher","clear the dishwasher")
     };
 }
+<div id="app">
+
+<h1>Todo App</h1>
+
 
 <ul>
 
     @foreach (var todoItem in localItems)
     {
         <li>
-            <p>@todoItem.Title</p>
+            <h2>@todoItem.Title</h2>
             <p>@todoItem.Description</p>
         </li>
     }
 </ul>
+
+
+</div>
