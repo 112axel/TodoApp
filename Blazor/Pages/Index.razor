@@ -1,3 +1,28 @@
 ﻿@page "/"
+@using Domain.Entities;
 
-<h1>Hello, world!</h1>
+@{
+    List<TodoItem> localItems = new()
+    {
+    new TodoItem("laundry","do the laundry"),
+    new TodoItem("dishwasher","clear the dishwasher")
+    };
+}
+<div id="app">
+
+<h1>Todo App</h1>
+
+
+<ul>
+
+    @foreach (var todoItem in localItems)
+    {
+        <li>
+            <h2>@todoItem.Title</h2>
+            <p>@todoItem.Description</p>
+        </li>
+    }
+</ul>
+
+
+</div>
