@@ -1,18 +1,25 @@
 using Domain.Entities;
 using Services;
+using System.Security.Cryptography.X509Certificates;
 namespace Tests;
 
 public class TodoServiceTesting
 {
+    private FakeDataBase fakeDataBase { get; set; }
+    private TodoService todoService { get; set; }
+    public TodoServiceTesting()
+    {
+        fakeDataBase = new FakeDataBase();
+        todoService = new TodoService(fakeDataBase);
+    }
+
+
     [Fact]
     public void RequestFromNewDBShouldBeOneSeededValue()
     {
-        //Arange
-        var db = new FakeDataBase();
-
         //act
 
-        var result = db.TodoItems;
+        var result = todoService.GetTodoItems();
 
         //assert
         Assert.NotNull(result);
@@ -26,10 +33,6 @@ public class TodoServiceTesting
     [Fact]
     public void CreateNewTodoReturnsSameValue()
     {
-        //arrange
-        var db = new FakeDataBase();
-        var todoService = new TodoService(db);
-
         //act
         var result = todoService.CreateNewTodo(new TodoItem("dishwasher", "empty dishwasher"));
 
@@ -42,13 +45,9 @@ public class TodoServiceTesting
     [Fact]
     public void CreateNewTodoListIsLongerAfterCreate()
     {
-        //arrange
-        var db = new FakeDataBase();
-        var todoService = new TodoService(db);
-
         //act
         var result = todoService.CreateNewTodo(new TodoItem("dishwasher", "empty dishwasher"));
 
-        Assert.Equal(2, db.TodoItems.Count);
+        Assert.Equal(2, fakeDataBase.TodoItems.Count);
     }
 }

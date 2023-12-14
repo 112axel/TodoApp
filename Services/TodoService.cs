@@ -15,6 +15,11 @@ namespace Services
             dataBase = db;
         }
 
+        public List<TodoItem> GetTodoItems()
+        {
+            return dataBase.TodoItems;
+        }
+
         public TodoItem CreateNewTodo(TodoItem? item)
         {
             if(item is null)
