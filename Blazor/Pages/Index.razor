@@ -1,12 +1,22 @@
 ﻿@page "/"
 @using Domain.Entities;
+@using Helpers;
 
-@{
-    List<TodoItem> localItems = new()
+@code{
+    [Inject]
+    private ApiCalls test{get; set;}
+    private List<TodoItem> todoItems = new();
+
+    protected override async Task OnInitializedAsync()
     {
-    new TodoItem("laundry","do the laundry"),
-    new TodoItem("dishwasher","clear the dishwasher")
-    };
+        UpdateTodoList();
+    }
+
+    private async void UpdateTodoList(){
+
+        todoItems = await test.GetTodoItems();
+        StateHasChanged();
+    }
 }
 <div id="app">
 
@@ -15,7 +25,7 @@
 
 <ul>
 
-    @foreach (var todoItem in localItems)
+    @foreach (var todoItem in todoItems)
     {
         <li>
             <h2>@todoItem.Title</h2>
