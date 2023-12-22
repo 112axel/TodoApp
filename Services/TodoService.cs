@@ -30,5 +30,10 @@ namespace Services
             dataBase.TodoItems.Add(item);
             return item;
         }
+
+        public void RemoveTodo(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

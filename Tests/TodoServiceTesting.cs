@@ -50,4 +50,19 @@ public class TodoServiceTesting
 
         Assert.Equal(2, fakeDataBase.TodoItems.Count);
     }
+
+    [Fact]
+    public void RemoveExistingElement()
+    {
+        todoService.RemoveTodo("make food");
+
+        Assert.Empty(fakeDataBase.TodoItems);
+    }
+    [Fact]
+    public void RemoveNonExistentElement()
+    {
+        todoService.RemoveTodo("stuff");
+        Assert.Throws<ArgumentOutOfRangeException>(()=>todoService.RemoveTodo("stuff"));
+
+    }
 }
