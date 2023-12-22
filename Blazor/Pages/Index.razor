@@ -34,8 +34,7 @@
 
 <form method="post" @onsubmit="Submit" >
     <InputText @bind-Value="NewTodo.Title"></InputText>
-
-    <InputText @bind-Value="NewTodo.Description"></InputText>
+    <InputTextArea @bind-Value="NewTodo.Description"></InputTextArea>
     <button type="submit">Create new</button>
 </form>
 
