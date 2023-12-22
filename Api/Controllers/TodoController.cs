@@ -24,4 +24,10 @@ public class TodoController : ControllerBase
         return todoService.GetTodoItems();
     }
 
+    [HttpPost("newItem")]
+    public void AddNewTodo(TodoItem item)
+    {
+        todoService.CreateNewTodo(item);
+    }
+
 }

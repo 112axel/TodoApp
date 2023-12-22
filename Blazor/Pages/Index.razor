@@ -14,17 +14,21 @@
     {
         UpdateTodoList();
         NewTodo ??= new("","");
+
     }
 
-    private async void UpdateTodoList(){
+    private async Task UpdateTodoList(){
 
         todoItems = await test.GetTodoItems();
         StateHasChanged();
     }
 
-    private void Submit()
+    private async void Submit()
     {
-        Console.WriteLine();
+        await test.NewTodo(NewTodo);
+        todoItems.Add(NewTodo);
+        NewTodo = new TodoItem("", "");
+        StateHasChanged();
     }
 
 }
@@ -32,11 +36,11 @@
 
 <h1>Todo App</h1>
 
-<form method="post" @onsubmit="Submit" >
+<EditForm Model="NewTodo" OnValidSubmit="Submit">
     <InputText @bind-Value="NewTodo.Title"></InputText>
     <InputTextArea @bind-Value="NewTodo.Description"></InputTextArea>
     <button type="submit">Create new</button>
-</form>
+</EditForm>
 
 <ul>
 

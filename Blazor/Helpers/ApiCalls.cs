@@ -27,5 +27,11 @@ namespace Blazor.Helpers
             return todoItems;
         }
 
+        public async Task NewTodo(TodoItem item)
+        {
+            var content = new StringContent(JsonSerializer.Serialize(item),System.Text.Encoding.UTF8,"application/json");
+            var result = httpClient.PostAsync("todo/newItem",content);
+
+        }
     }
 }

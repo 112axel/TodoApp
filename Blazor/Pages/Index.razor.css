@@ -23,7 +23,7 @@ li {
 
 /*form*/
 
-form{
+::deep form{
     display: flex;
     flex-direction:column;
 }
