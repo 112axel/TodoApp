@@ -1,15 +1,19 @@
 ﻿@page "/"
 @using Domain.Entities;
 @using Helpers;
+@using Microsoft.AspNetCore.Components.Forms;
 
 @code{
     [Inject]
     private ApiCalls test{get; set;}
     private List<TodoItem> todoItems = new();
 
+    public TodoItem NewTodo { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         UpdateTodoList();
+        NewTodo ??= new("","");
     }
 
     private async void UpdateTodoList(){
@@ -17,11 +21,22 @@
         todoItems = await test.GetTodoItems();
         StateHasChanged();
     }
+
+    private void Submit()
+    {
+        Console.WriteLine();
+    }
+
 }
 <div id="app">
 
 <h1>Todo App</h1>
 
+<form method="post" @onsubmit="Submit" >
+    <InputText @bind-Value="NewTodo.Title"></InputText>
+    <InputTextArea @bind-Value="NewTodo.Description"></InputTextArea>
+    <button type="submit">Create new</button>
+</form>
 
 <ul>
 
