@@ -1,5 +1,6 @@
 using Domain.Entities;
 using Services;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 namespace Tests;
 
@@ -61,7 +62,6 @@ public class TodoServiceTesting
     [Fact]
     public void RemoveNonExistentElement()
     {
-        todoService.RemoveTodo("stuff");
-        Assert.Throws<ArgumentOutOfRangeException>(()=>todoService.RemoveTodo("stuff"));
+        Assert.Throws<ArgumentOutOfRangeException>(()=> { todoService.RemoveTodo("stuff"); });
     }
 }
