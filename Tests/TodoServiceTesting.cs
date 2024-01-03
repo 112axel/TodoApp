@@ -63,6 +63,5 @@ public class TodoServiceTesting
     {
         todoService.RemoveTodo("stuff");
         Assert.Throws<ArgumentOutOfRangeException>(()=>todoService.RemoveTodo("stuff"));
-
     }
 }

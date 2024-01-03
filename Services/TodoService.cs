@@ -31,9 +31,14 @@ namespace Services
             return item;
         }
 
-        public void RemoveTodo(string v)
+        public void RemoveTodo(string title)
         {
-            throw new NotImplementedException();
+            var toDelete = dataBase.TodoItems.FirstOrDefault(x=>x.Title == title);
+            if(toDelete == null)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            dataBase.TodoItems.Remove(toDelete);
         }
     }
 }

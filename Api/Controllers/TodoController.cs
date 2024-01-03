@@ -30,4 +30,10 @@ public class TodoController : ControllerBase
         todoService.CreateNewTodo(item);
     }
 
+    [HttpDelete("removeItem")]
+    public void DeleteTodo([FromBody] string name)
+    {
+        todoService.RemoveTodo(name);
+    }
+
 }

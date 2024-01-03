@@ -33,5 +33,17 @@ namespace Blazor.Helpers
             var result = httpClient.PostAsync("todo/newItem",content);
 
         }
+        
+        public async Task RemoveTodo(string name)
+        {
+            var content = new StringContent(JsonSerializer.Serialize(name),System.Text.Encoding.UTF8,"application/json");
+            HttpRequestMessage httpRequest = new()
+            {
+                Method = HttpMethod.Delete,
+                Content = content,
+                RequestUri = new Uri("https://localhost:7249/api/todo/removeItem")
+            };
+            var result = httpClient.SendAsync(httpRequest);
+        }
     }
 }
