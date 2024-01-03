@@ -30,5 +30,15 @@ namespace Services
             dataBase.TodoItems.Add(item);
             return item;
         }
+
+        public void RemoveTodo(string title)
+        {
+            var toDelete = dataBase.TodoItems.FirstOrDefault(x=>x.Title == title);
+            if(toDelete == null)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            dataBase.TodoItems.Remove(toDelete);
+        }
     }
 }

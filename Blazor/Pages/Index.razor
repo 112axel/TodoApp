@@ -31,27 +31,39 @@
         StateHasChanged();
     }
 
+    private async void Delete(TodoItem todo)
+    {
+        await test.RemoveTodo(todo.Title);
+        var toRemove = todoItems.FirstOrDefault(x => x.Title == todo.Title);
+        if(toRemove != null)
+        {
+            todoItems.Remove(toRemove);
+        }
+        StateHasChanged();
+    }
+
 }
 <div id="app">
 
-<h1>Todo App</h1>
+    <h1>Todo App</h1>
 
-<EditForm Model="NewTodo" OnValidSubmit="Submit">
-    <InputText @bind-Value="NewTodo.Title"></InputText>
-    <InputTextArea @bind-Value="NewTodo.Description"></InputTextArea>
-    <button type="submit">Create new</button>
-</EditForm>
+    <EditForm Model="NewTodo" OnValidSubmit="Submit">
+        <InputText @bind-Value="NewTodo.Title"></InputText>
+        <InputTextArea @bind-Value="NewTodo.Description"></InputTextArea>
+        <button type="submit">Create new</button>
+    </EditForm>
 
-<ul>
+    <ul>
 
-    @foreach (var todoItem in todoItems)
-    {
-        <li>
-            <h2>@todoItem.Title</h2>
-            <p>@todoItem.Description</p>
-        </li>
-    }
-</ul>
+        @foreach (var todoItem in todoItems)
+        {
+            <li>
+                <h2>@todoItem.Title</h2>
+                <p>@todoItem.Description</p>
+                <button onclick="@(()=>Delete(todoItem))"> Remove Todo</button>
+            </li>
+        }
+    </ul>
 
 
 </div>

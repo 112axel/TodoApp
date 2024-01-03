@@ -1,5 +1,6 @@
 using Domain.Entities;
 using Services;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 namespace Tests;
 
@@ -49,5 +50,18 @@ public class TodoServiceTesting
         var result = todoService.CreateNewTodo(new TodoItem("dishwasher", "empty dishwasher"));
 
         Assert.Equal(2, fakeDataBase.TodoItems.Count);
+    }
+
+    [Fact]
+    public void RemoveExistingElement()
+    {
+        todoService.RemoveTodo("make food");
+
+        Assert.Empty(fakeDataBase.TodoItems);
+    }
+    [Fact]
+    public void RemoveNonExistentElement()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(()=> { todoService.RemoveTodo("stuff"); });
     }
 }
